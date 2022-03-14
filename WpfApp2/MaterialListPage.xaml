@@ -1,0 +1,70 @@
+﻿<Page x:Class="WpfApp2.MaterialListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp2"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="MaterialListPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBlock Margin="7,0">Поиск</TextBlock>
+                <TextBox Name="TbSearch" Width="150" Height="30" Margin="7,0" TextChanged="TbSearch_TextChanged"></TextBox>
+                <Button Name="ButtAdd" Height="30" Width="110" Margin="0,5" Click="ButAdd_Click">Создать </Button>
+            </StackPanel>
+            <TextBlock Margin="2,0" VerticalAlignment="Center" Name="TbCount">Записей:</TextBlock>
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">Сортировка</TextBlock>
+                <ComboBox Name="CbSort" Height="30" Width="110" Margin="7,0" SelectionChanged="CbSort_SelectionChanged">
+                    <ComboBoxItem>Название воз</ComboBoxItem>
+                    <ComboBoxItem>Название убыв</ComboBoxItem>
+                    <ComboBoxItem>Стоимость возр</ComboBoxItem>
+                    <ComboBoxItem>Стоимость убыв</ComboBoxItem>
+                    <ComboBoxItem>Остаток возр</ComboBoxItem>
+                    <ComboBoxItem>Остаток убыв</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">Фильтрация</TextBlock>
+                <ComboBox Name="CbFilt" Height="30" Width="110" Margin="7,0" SelectionChanged="CbFilt_SelectionChanged"></ComboBox>
+            </StackPanel>
+            <Button Name="ButtEditMin" Width="200" Height="30" Margin="7,0,0,20" Click="ButtEditMin_Click" Visibility="Hidden">Изменить минимальное кол-во</Button>
+        </StackPanel>
+        <ListView Name="LVMaterial" Grid.Row="1" SelectionMode="Extended" SelectionChanged="LVMaterial_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center" Orientation="Vertical"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                 <Border Background="{Binding MinColor}">
+                   <StackPanel Orientation="Horizontal">
+                   <Image Width="100" Height="100" Source="{Binding image}" Margin="7,0" VerticalAlignment="Center"></Image>
+                   <StackPanel Margin="0,15">
+                   <StackPanel Orientation="Horizontal">
+                   <TextBlock Name="TbMaterialType" Text="{Binding MaterialType.Title}"></TextBlock>
+                   <TextBlock Margin="7,0">|</TextBlock>
+                   <TextBlock Name="TbMaterialTitle" Text="{Binding Title}"></TextBlock>
+                   </StackPanel>
+                   <TextBlock Name="TbMinCount" Text="{Binding MinCount, StringFormat={}Минимальное количество: {0} шт}"></TextBlock>
+                   <TextBlock Width="450" TextWrapping="Wrap" Name="TbSupplier" Loaded="TbSupplier_Loaded" Uid="{Binding ID}"></TextBlock>
+                   </StackPanel>
+                   <TextBlock Name="TbLeft" Text="{Binding CountInStock, StringFormat={}Остаток: {0} шт}"></TextBlock>
+                                <Button Name="ButtEdit" Uid="{Binding ID}" Click="ButtEdit_Click">Редактировать</Button>
+                            </StackPanel>
+                   </Border>
+                      </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

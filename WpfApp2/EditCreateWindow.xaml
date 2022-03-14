@@ -1,0 +1,58 @@
+﻿<Window x:Class="WpfApp2.EditCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Создание\Редактирование" Height="469" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Margin="10,5" Width="772">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="100,10" Width="193">
+                    <TextBlock><Run Text="Изображение"/></TextBlock>
+                    <Button Name="ButtEditImage" Height="30" Width="100" Margin="0,5" Click="ButtEditImage_Click">Изменить</Button>
+                    <Image x:Name="MaterialImage"  Width="100" Height="100"/>
+                    
+                    <TextBlock Margin="0,5"><Run Text="Будущие  поставщики"/></TextBlock>
+                    <ComboBox x:Name="CbSupplier" IsEditable="True"/>
+                    <Button Margin="0,7" Width="150" x:Name="ButtSupplierAdd" Click="ButtSupplierAdd_Click" Content="Добавить"/>
+                    <Button Margin="0,7" Width="150" x:Name="ButtSupplierRemove" Click="ButtSupplierRemove_Click" Content="Удалить"/>
+                    
+                </StackPanel>
+                <StackPanel Margin="7,0">
+                    <TextBlock Margin="0,5"><Run Text="Наименование"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" Width="200" x:Name="TbTitle" />
+                    <TextBlock Margin="0,5"><Run Text="Тип материала"/></TextBlock>
+                    <ComboBox HorizontalAlignment="Left" Width="150" x:Name="CbMaterialType"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,5"><Run Text="Кол-во на складе"/></TextBlock>
+                        <TextBox Margin="7,0" Width="50" x:Name="TbCountInStock" Height="25"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,5"><Run Text="Кол-во в упаковке"/></TextBlock>
+                        <TextBox x:Name="TbCountInPack" Margin="7,0" Width="50" Height="25"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,5"><Run Text="Единица измерения"/></TextBlock>
+                        <TextBox x:Name="TbUnit" Margin="7,0" Width="50" Height="25"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,5"><Run Text="Минимальное кол-во"/></TextBlock>
+                        <TextBox x:Name="TbMinCount" Margin="7,0" Width="50" Height="25"/>
+
+                    </StackPanel>
+                    <TextBlock Margin="0,5"><Run Text="Стоимость за единицу"/></TextBlock>
+                    <TextBox x:Name="TbCost" Width="150" HorizontalAlignment="Left"/>
+                    <TextBlock Margin="0,5"><Run Text="Описание"/></TextBlock>
+                    <TextBox x:Name="TbDescription" TextWrapping="Wrap" Width="150" Height="40"/>
+                    <Button x:Name="ButtUpdate" Width="150" Margin="0,7" Click="ButtUpdate_Click" Content="Записать"/>
+                    <Button x:Name="ButtDelete" Width="150" Click="ButtDelete_Click" Content="Удалить"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
